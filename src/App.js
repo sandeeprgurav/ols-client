@@ -34,8 +34,8 @@ async function handleLogout() {
   props.history.push("/login");
 }
 
-  return (
-  !isAuthenticating &&
+return (
+!isAuthenticating && (
   <div className="App container">
     <Navbar fluid collapseOnSelect>
       <Navbar.Header>
@@ -46,22 +46,29 @@ async function handleLogout() {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav pullRight>
-          {isAuthenticated
-            ? <NavItem onClick={handleLogout}>Logout</NavItem>
-            : <>
-                <LinkContainer to="/signup">
-                  <NavItem>Signup</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/login">
-                  <NavItem>Login</NavItem>
-                </LinkContainer>
-              </>
-          }
+          {isAuthenticated ? (
+            <>
+              <LinkContainer to="/settings">
+                <NavItem>Settings</NavItem>
+              </LinkContainer>
+              <NavItem onClick={handleLogout}>Logout</NavItem>
+            </>
+          ) : (
+            <>
+              <LinkContainer to="/signup">
+                <NavItem>Signup</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/login">
+                <NavItem>Login</NavItem>
+              </LinkContainer>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
     <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
   </div>
+)
 );
 }
 

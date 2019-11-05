@@ -1,5 +1,6 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
+  STRIPE_KEY: "pk_test_sHU9WCf8tWyddTcx6P8GnT5L00Nntlx02o",
   s3: {
     REGION: "us-east-1",
     BUCKET: "sandeep-app"
