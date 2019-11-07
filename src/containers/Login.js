@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Auth } from "aws-amplify";
+import { Link } from "react-router-dom";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { useFormFields } from "../libs/hooksLib";
 import "./Login.css";
+import FacebookButton from "../components/FacebookButton";
 
 export default function Login(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,16 +25,22 @@ export default function Login(props) {
 
     try {
       await Auth.signIn(fields.email, fields.password);
-      props.userHasAuthenticated(true);      
+      props.userHasAuthenticated(true);
     } catch (e) {
       alert(e.message);
       setIsLoading(false);
     }
   }
 
+  function handleFbLogin() {
+    props.userHasAuthenticated(true);
+  };
+
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
+        <FacebookButton onLogin={handleFbLogin}/>
+        <hr />
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
           <FormControl
@@ -50,6 +58,7 @@ export default function Login(props) {
             onChange={handleFieldChange}
           />
         </FormGroup>
+        <Link to="/login/reset">Forgot password?</Link>
         <LoaderButton
           block
           type="submit"
