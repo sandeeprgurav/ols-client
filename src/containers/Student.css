@@ -1,0 +1,31 @@
+.Student .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.Student .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Student .lander div {
+  padding-top: 20px;
+}
+.Student .lander div a:first-child {
+  margin-right: 20px;
+}
+
+.Student .lander p {
+  color: #999;
+}
+.Student .students h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Student .students p {
+  color: #666;
+}

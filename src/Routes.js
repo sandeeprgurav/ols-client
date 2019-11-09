@@ -1,10 +1,13 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Route,Switch } from "react-router-dom";
+import { ConnectedRouter } from 'react-router-redux';
 import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 import ResetPassword from "./containers/ResetPassword";
 import ChangeEmail from "./containers/ChangeEmail";
+import App from "./App";
 import ChangePassword from "./containers/ChangePassword";
 import Loadable from "react-loadable";
 
@@ -21,6 +24,7 @@ const MyLoadingComponent = ({isLoading, error}) => {
     return null;
   }
 };
+
 
 const AsyncHome = Loadable({
   loader: () => import("./containers/Home"),
@@ -50,6 +54,16 @@ const AsyncChangeUserInfo =Loadable({
  loader: () => import("./containers/ChangeUserInfo"),
  loading: MyLoadingComponent
 });
+const AsyncStudent = Loadable({
+  loader: () => import("./containers/Student"),
+  loading: MyLoadingComponent
+});
+const AsyncSettings = Loadable({
+  loader: () => import("./containers/Settings"),
+  loading: MyLoadingComponent
+});
+
+
 
 export default ({ appProps }) =>
   <Switch>
@@ -107,7 +121,21 @@ export default ({ appProps }) =>
       component={ChangePassword}
       appProps={appProps}
     />
-    {/* Finally, catch all unmatched routes */}
-    <Route component={AsyncNotFound} />
+    <AuthenticatedRoute
+      path="/student"
+      exact
+      component={AsyncStudent}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/settings"
+      exact
+      component={AsyncSettings}
+      appProps={appProps}
+    />
+
+    {/* Finally, catch all unmatched routes*/}
+      <Route component={AsyncNotFound} />
+
   </Switch>
 ;

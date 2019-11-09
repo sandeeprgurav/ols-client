@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { connect } from 'react-redux';
+import { store, history } from './redux/store';
+import { Provider } from 'react-redux';
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
 import config from "./config";
 import Routes from "./Routes";
+
 import { Auth } from "aws-amplify";
 
 function App(props) {
@@ -26,7 +30,7 @@ function App(props) {
       }
   }
 
-  setIsAuthenticating(false);
+  //setIsAuthenticating(false);
   loadFb();
 }
 
@@ -47,7 +51,7 @@ async function  loadFb() {
       alert(e);
     }
   }
-  setIsAuthenticating(false);
+  //setIsAuthenticating(false);
 }
 
 function loadFacebookSDK() {
@@ -70,44 +74,45 @@ function loadFacebookSDK() {
 }
 
 return (
-!isAuthenticating && (
   <div className="App container">
-    <Navbar fluid collapseOnSelect>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <Link to="/">Scratch</Link>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Nav pullRight>
-          {isAuthenticated ? (
-            <>
-              <LinkContainer to="/settings">
-                <NavItem>Settings</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/changeUserInfo">
-                <NavItem>Change User Info</NavItem>
-              </LinkContainer>
-              <NavItem onClick={handleLogout}>Logout</NavItem>
-            </>
-          ) : (
-            <>
-              <LinkContainer to="/signup">
-                <NavItem>Signup</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/login">
-                <NavItem>Login</NavItem>
-              </LinkContainer>
-            </>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-    <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
+        <Navbar fluid collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">OLS</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              {isAuthenticated ? (
+                <>
+                  <LinkContainer to="/settings">
+                    <NavItem>Payment</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/student">
+                    <NavItem>Student</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/changeUserInfo">
+                    <NavItem>Profile</NavItem>
+                  </LinkContainer>
+                  <NavItem onClick={handleLogout}>Logout</NavItem>
+                </>
+              ) : (
+                <>
+                  <LinkContainer to="/signup">
+                    <NavItem>Signup</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/login">
+                    <NavItem>Login</NavItem>
+                  </LinkContainer>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+        <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
   </div>
-)
 );
 }
 
-export default withRouter(App);
+export default connect()(App);
