@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Home.css";
+import { connect } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
-import { API } from "aws-amplify";
 import { Link } from "react-router-dom";
+import actions from "../redux/actions";
 
+const { getNotes } = actions;
 
-export default function Home(props) {
-  const [notes, setNotes] = useState([]);
+function Home(props) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-  async function onLoad() {
-    if (!props.isAuthenticated) {
-      return;
-    }
+    onLoad();
+  },[]);
 
-    try {
-      const notes = await loadNotes();
-      setNotes(notes);
-    } catch (e) {
-      alert(e);
-    }
-
-    setIsLoading(false);
+function onLoad() {
+   try {
+         props.getNotes();
+       } catch (e) {
+         alert(e);
+       }
+     setIsLoading(false);
   }
 
-  onLoad();
-}, [props.isAuthenticated]);
-
-function loadNotes() {
-  return API.get("notes", "/notes");
-}
 
 function renderNotesList(notes) {
     return [{}].concat(notes).map((note, i) =>
@@ -75,7 +67,7 @@ return (
       <div className="notes">
         <PageHeader>Your Notes</PageHeader>
         <ListGroup>
-          {!isLoading && renderNotesList(notes)}
+          {!isLoading && renderNotesList(props.notes)}
         </ListGroup>
       </div>
     );
@@ -87,3 +79,12 @@ return (
     </div>
   );
 }
+
+function mapStateToProps(state) {
+  var stateObj = state.ols!==undefined && state.ols.toJS();
+  return {
+    notes: stateObj.notes,
+    loading: stateObj.loading,
+  };
+}
+export default connect(mapStateToProps,{ getNotes})(Home);

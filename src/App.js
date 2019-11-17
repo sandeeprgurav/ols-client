@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { connect } from 'react-redux';
-import { store, history } from './redux/store';
-import { Provider } from 'react-redux';
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
 import config from "./config";
@@ -29,8 +27,7 @@ function App(props) {
         alert(e);
       }
   }
-
-  //setIsAuthenticating(false);
+  setIsAuthenticating(false);
   loadFb();
 }
 
@@ -51,7 +48,7 @@ async function  loadFb() {
       alert(e);
     }
   }
-  //setIsAuthenticating(false);
+  setIsAuthenticating(false);
 }
 
 function loadFacebookSDK() {
@@ -89,8 +86,14 @@ return (
                   <LinkContainer to="/settings">
                     <NavItem>Payment</NavItem>
                   </LinkContainer>
-                  <LinkContainer to="/student">
+                  <LinkContainer to="/students">
                     <NavItem>Student</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/trainers">
+                    <NavItem>Trainer</NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/courses">
+                    <NavItem>Course</NavItem>
                   </LinkContainer>
                   <LinkContainer to="/changeUserInfo">
                     <NavItem>Profile</NavItem>

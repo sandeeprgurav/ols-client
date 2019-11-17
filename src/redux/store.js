@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware} from 'redux';
 import createHistory from 'history/createBrowserHistory';
 
 import { routerReducer, routerMiddleware } from 'react-router-redux';
@@ -12,9 +12,7 @@ const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
 const routeMiddleware = routerMiddleware(history);
 const middlewares = [thunk, sagaMiddleware, routeMiddleware];
-const composeEnhancers = composeWithDevTools({
-  // Specify custom devTools options
-});
+
 const store = createStore(
   combineReducers({
     ols,

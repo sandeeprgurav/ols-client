@@ -1,5 +1,4 @@
 import {API_CONSTANT} from './dbConfig';
-import { API } from "aws-amplify";
 
 var formQueryString = (queryParamObj) => {
   var esc = encodeURIComponent;
@@ -26,12 +25,12 @@ export const callAPI = async (url, method='GET', postData, queryParams) => {
 
 function handleResponse(res) {
   if(res.ok) {
-    if(res.headers.get("Content-Type") == "text/html;charset=UTF-8") {
+    if(res.headers.get("Content-Type") === "text/html;charset=UTF-8") {
       return  res.text()
     } else {
       return res.json().then(json => json)
     }
-  } else if(res.status == 404) {
+  } else if(res.status === 404) {
     return Promise.resolve(Object.assign({}, res, {
           status: res.status,
           statusText: res.error
@@ -46,8 +45,4 @@ function handleResponse(res) {
 
 function getLocalstorage(name) {
   return localStorage.getItem(name);
-}
-
-export const callServerlessAPI = async (key,url) => {
-  return await API.get(key, url);
 }

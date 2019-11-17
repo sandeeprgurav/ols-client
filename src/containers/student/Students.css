@@ -29,3 +29,8 @@
 .Student .students p {
   color: #666;
 }
+
+.Student .students {
+  font-family: sans-serif;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+.NewStudent form {
+  padding-bottom: 15px;
+}
+
+.NewStudent form text {
+  height: 300px;
+  font-size: 24px;
+}

@@ -62,5 +62,6 @@ export default {
   MAX_ATTACHMENT_SIZE: 5000000,
   API_CONSTANT : 'http://localhost:8080/api/',
   social: {FB: "2538397456244940"},
+  DATE_FORMAT : 'MM/DD/YYYY',
   ...config
 };

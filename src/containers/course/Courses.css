@@ -1,0 +1,36 @@
+.Course .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.Course .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Course .lander div {
+  padding-top: 20px;
+}
+.Course .lander div a:first-child {
+  margin-right: 20px;
+}
+
+.Course .lander p {
+  color: #999;
+}
+.Course .courses h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Course .courses p {
+  color: #666;
+}
+
+.Course .courses {
+  font-family: sans-serif;
+  text-align: center;
+}

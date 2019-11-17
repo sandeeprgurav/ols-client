@@ -1,0 +1,36 @@
+.Trainer .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.Trainer .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Trainer .lander div {
+  padding-top: 20px;
+}
+.Trainer .lander div a:first-child {
+  margin-right: 20px;
+}
+
+.Trainer .lander p {
+  color: #999;
+}
+.Trainer .trainers h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Trainer .trainers p {
+  color: #666;
+}
+
+.Trainer .trainers {
+  font-family: sans-serif;
+  text-align: center;
+}

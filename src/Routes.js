@@ -1,24 +1,19 @@
 import React from "react";
-import { connect } from 'react-redux';
 import { Route,Switch } from "react-router-dom";
-import { ConnectedRouter } from 'react-router-redux';
 import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 import ResetPassword from "./containers/ResetPassword";
 import ChangeEmail from "./containers/ChangeEmail";
-import App from "./App";
 import ChangePassword from "./containers/ChangePassword";
 import Loadable from "react-loadable";
 
 const MyLoadingComponent = ({isLoading, error}) => {
-  // Handle the loading state
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  // Handle the error state
   else if (error) {
-    return <div>Sorry, there was a problem loading the page.</div>;
+    return <div> Sorry, there was a problem loading the page.</div>;
   }
   else {
     return null;
@@ -54,16 +49,46 @@ const AsyncChangeUserInfo =Loadable({
  loader: () => import("./containers/ChangeUserInfo"),
  loading: MyLoadingComponent
 });
+const AsyncStudents = Loadable({
+  loader: () => import("./containers/student/Students"),
+  loading: MyLoadingComponent
+});
+const AsyncNewStudent =Loadable({
+ loader: () => import("./containers/student/NewStudent"),
+ loading: MyLoadingComponent
+});
 const AsyncStudent = Loadable({
-  loader: () => import("./containers/Student"),
+  loader: () => import("./containers/student/Student"),
+  loading: MyLoadingComponent
+});
+const AsyncTrainers = Loadable({
+  loader: () => import("./containers/trainer/Trainers"),
+  loading: MyLoadingComponent
+});
+const AsyncNewTrainer =Loadable({
+ loader: () => import("./containers/trainer/NewTrainer"),
+ loading: MyLoadingComponent
+});
+const AsyncTrainer = Loadable({
+  loader: () => import("./containers/trainer/Trainer"),
+  loading: MyLoadingComponent
+});
+const AsyncCourses = Loadable({
+  loader: () => import("./containers/course/Courses"),
+  loading: MyLoadingComponent
+});
+const AsyncNewCourse =Loadable({
+ loader: () => import("./containers/course/NewCourse"),
+ loading: MyLoadingComponent
+});
+const AsyncCourse = Loadable({
+  loader: () => import("./containers/course/Course"),
   loading: MyLoadingComponent
 });
 const AsyncSettings = Loadable({
   loader: () => import("./containers/Settings"),
   loading: MyLoadingComponent
 });
-
-
 
 export default ({ appProps }) =>
   <Switch>
@@ -122,9 +147,57 @@ export default ({ appProps }) =>
       appProps={appProps}
     />
     <AuthenticatedRoute
-      path="/student"
+      path="/students"
+      exact
+      component={AsyncStudents}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/students/new"
+      exact
+      component={AsyncNewStudent}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/students/:id"
       exact
       component={AsyncStudent}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/trainers"
+      exact
+      component={AsyncTrainers}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/trainers/new"
+      exact
+      component={AsyncNewTrainer}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/trainers/:id"
+      exact
+      component={AsyncTrainer}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/courses"
+      exact
+      component={AsyncCourses}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/courses/new"
+      exact
+      component={AsyncNewCourse}
+      appProps={appProps}
+    />
+    <AuthenticatedRoute
+      path="/courses/:id"
+      exact
+      component={AsyncCourse}
       appProps={appProps}
     />
     <AuthenticatedRoute
