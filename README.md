@@ -4,7 +4,7 @@ https://ols-app.netlify.com/
 https://github.com/sandeeprgurav/ols-client
 
 OLS Rest API Access:
-https://localhost:8443/swagger/index.html
+https://3.134.234.45:8443/swagger/index.html
 <br/>
 https://github.com/sandeeprgurav/ols-rest-api
 
