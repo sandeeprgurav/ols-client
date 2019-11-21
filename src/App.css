@@ -1,7 +1,35 @@
 .App {
   margin-top: 15px;
+  background-color: #f9f9f9;
 }
 
 .App .navbar-brand {
   font-weight: bold;
+}
+
+.navBar{
+  background-color: black;
+}
+
+.navBar li{
+  font-size:larger;  
+}
+
+.navBar li a{
+  color:white;
+}
+.navbar-default .navbar-nav>li>a{
+  color:white;
+}
+
+.header{
+  background-color: #eaeae5;
+  padding: 1px;
+  margin: auto
+}
+.link{
+  color: blue;
+}
+.ols .appName {
+  color:white;
 }

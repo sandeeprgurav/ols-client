@@ -72,10 +72,12 @@ function loadFacebookSDK() {
 
 return (
   <div className="App container">
-        <Navbar fluid collapseOnSelect>
+        <Navbar fluid collapseOnSelect className="navBar">
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">OLS</Link>
+              <div className="ols">
+                <Link className="appName" to="/">OLS</Link>
+              </div>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

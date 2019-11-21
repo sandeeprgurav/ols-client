@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import {ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Trainers.css";
 import { connect } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
@@ -128,11 +128,11 @@ class Trainers extends Component {
     return (
       <div className="trainers">
         <hr/>
-        <PageHeader>Trainer List</PageHeader>
+        <div className="header"><h1>Trainer List</h1></div>
         <ListGroup>
         <LinkContainer key="new" to="/trainers/new">
           <ListGroupItem>
-            <h4>
+            <h4 className="link">
               <b>{"\uFF0B"}</b> Create a new Trainer
             </h4>
           </ListGroupItem>
