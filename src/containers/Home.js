@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import actions from "../redux/actions";
+import olsImg from "../image/olsImage.jpg";
 
 const { getNotes } = actions;
 
@@ -47,16 +48,12 @@ function renderNotesList(notes) {
 
 function renderLander() {
 return (
-  <div className="lander">
-    <h1>Scratch</h1>
-    <p>A simple note taking app</p>
-    <div>
-      <Link to="/login" className="btn btn-info btn-lg">
-        Login
-      </Link>
-      <Link to="/signup" className="btn btn-success btn-lg">
-        Signup
-      </Link>
+  <div className="alignCenter">
+    <h1>Online Learning System</h1>
+    <p>Application to bring learners and trainers together!</p>
+    <div >
+      <img src={olsImg} alt="Logo" />
+
     </div>
   </div>
 );
