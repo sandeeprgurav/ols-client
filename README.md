@@ -1,1 +1,22 @@
+OLS Client Access Link:
+https://ols-app.netlify.com/
 
+
+OLS Rest API Access:
+https://localhost:8443/swagger/index.html
+
+
+Netlify Account:
+https://app.netlify.com/teams/sandeeprgurav/sites
+
+Seed Account:
+https://console.seed.run/sandeeprgurav1/serverless-stack-api
+
+Jekins Access:
+http://3.134.234.45:8082/
+
+
+Access Linux :
+connect locally ec2 instance:
+goto ols-key.pem drive :C:\Sandeep\Career\aws
+ssh -i ols-key.pem ec2-user@3.134.234.45
